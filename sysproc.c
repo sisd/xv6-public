@@ -14,6 +14,22 @@ sys_fork(void)
 }
 
 int
+sys_ps(void)
+{
+  return ps();
+}
+
+
+int
+sys_setpr(void)
+{
+  int pid, priority;
+  if (argint(0, &pid) < 0) return -1;
+  if (argint(1, &priority) < 0) return -1;
+  return setpr(pid, priority);
+}
+
+int
 sys_exit(void)
 {
   exit();
